@@ -1,0 +1,28 @@
+/* element selectors */
+header h1 {
+    padding-right: 15em;
+}
+
+/* class selectors */
+.forecast-container {
+    margin-left: 1px;
+
+}
+.history-button {
+    text-transform: capitalize;
+    margin-bottom: 10px;
+
+}
+.history-button:hover {
+    cursor: pointer;
+    color: rgb(4, 4, 4);
+    box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+}
+
+/* id selectors */
+#day {
+    padding: 0;
+    padding-top: 5px;
+    margin-right: 5px;
+    text-align: center;
+}
