@@ -23,7 +23,7 @@ function init() {
         .then(function (response) {
             return response.json();
         })
-        //Parse data and add to HTML
+        
         .then(function (data) {
             mainDisplayEl.removeClass("d-none");
             cityDateDisplayEl.text(data.name + ' (' + currentDate + ')');
@@ -33,14 +33,14 @@ function init() {
             tempDisplayEl.text('Temp: ' + data.main.temp + ' \u2109');
             windDisplayEl.text('Wind: ' + data.wind.speed + ' MPH');
             humidityDisplayEl.text('Humidity: ' + data.main.humidity + ' %');
-            //Create variable that pulls id from recent fetch to ensure consistency in city
+            //Variable pulls ID
             cityId = data.id;
             //Get 5-day forecast weather data
             fetch('https://api.openweathermap.org/data/2.5/forecast?id=' + cityId + '&appid=' + APIKey + '&units=imperial')
                 .then(function (response) {
                     return response.json();
                 })
-                //Parse data, create HTML elements, use loops to grab data and append to containers
+                
                 .then(function (data) {
                     $('#forecast-header').removeClass('d-none');
                     var fiveDayEls = document.querySelectorAll("#day");
@@ -54,20 +54,20 @@ function init() {
                         var forecastDateEl = document.createElement('h5');
                         forecastDateEl.innerHTML = forecastMonth + '/' + forecastDay + '/' + forecastYear;
                         fiveDayEls[i].append(forecastDateEl);
-                        //create HTML element to add weather icons
+                        //HTML element to add weather icons
                         var forecastWeatherIcon = document.createElement('img');
                         forecastWeatherIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + data.list[forecastLoop].weather[0].icon + '@2x.png');
                         forecastWeatherIcon.setAttribute('alt', data.list[forecastLoop].weather[0].description);
                         fiveDayEls[i].append(forecastWeatherIcon);
-                        //create HTML element to add forecast temp data
+                        //HTML element to add forecast temp data
                         var forecastTemp = document.createElement('p');
                         forecastTemp.innerHTML = 'Temp: ' + data.list[forecastLoop].main.temp + ' \u2109';
                         fiveDayEls[i].append(forecastTemp);
-                        //create HTML element to add forecast wind data
+                        //HTML element to add forecast wind data
                         var forecastWind = document.createElement('p');
                         forecastWind.innerHTML = 'Wind: ' + data.list[forecastLoop].wind.speed + ' MPH';
                         fiveDayEls[i].append(forecastWind);
-                        //create HTML element to add forecast humidity data
+                        //HTML element to add forecast humidity data
                         var forecastHumidity = document.createElement('p');
                         forecastHumidity.innerHTML = 'Humidity: ' + data.list[forecastLoop].main.humidity + ' %';
                         fiveDayEls[i].append(forecastHumidity);
@@ -75,7 +75,7 @@ function init() {
                 })
         });
     }
-    //Display input history using loop from local storage, create HTML element with css styling
+    //Display input history using loop from local storage
     function renderSearchHistory() {
         searchHistoryEl.innerHTML = '';
         for (var i = 0; i < historyStorage.length; i++) {
@@ -91,7 +91,7 @@ function init() {
             searchHistoryEl.append(searchHit);
         }
     }
-    //Search button listener runs data fetch function, stores data, and renders search history
+    //Search button listener 
     searchBtnEl.addEventListener('click', function () {
         var cityRequested = cityInputEl.val();
         fetchWeatherData(cityRequested);
@@ -99,13 +99,13 @@ function init() {
         localStorage.setItem("search", JSON.stringify(historyStorage));
         renderSearchHistory();
     });
-    //Clear button listeners clears storage, empties parse var array, and renders search history to show 'empty'
+    
     clearBtn.addEventListener('click', function () {
         localStorage.clear();
         historyStorage = [];
         renderSearchHistory();
     })
-    //Run rendering function at page load to pull local storage and display last result (if any)
+    
     renderSearchHistory();
     if (historyStorage.length > 0) {
         fetchWeatherData(historyStorage[historyStorage.length - 1]);

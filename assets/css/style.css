@@ -1,6 +1,7 @@
 /* element selectors */
 header h1 {
     padding-right: 15em;
+    text-align: center;
 }
 
 /* class selectors */
@@ -16,7 +17,7 @@ header h1 {
 .history-button:hover {
     cursor: pointer;
     color: rgb(4, 4, 4);
-    box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+    box-shadow: 0 5px 15px rgba(16, 248, 105, 0.4);
 }
 
 /* id selectors */

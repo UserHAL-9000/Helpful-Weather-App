@@ -14,11 +14,50 @@
 
 <body>
     <header>
-        <!-- <h1 class="text-light bg-danger bg-opacity-75 text-end py-4 mb-3">Weather Application</h1> -->
         <h1 class="p-3 mb-2 bg-success text-white">Weather Application</h1>
     </header>
     <main>
-
+        <div class="row container px-2">
+            <!-- breaks up page into two sections/columns -->
+            <div class="col align-items-start d-inline-flex">
+                <!-- leftmost page column containing search box/button elements -->
+                <div id="search-column" class="col pb-4 col-lg-4">
+                    <div class="mb-3">
+                        <label for="city-input" class="form-label fs-2 fw-bold">Weather By City</label>
+                        <input type="text" class="form-control py-3" id="city-input" placeholder="Enter city name">
+                    </div>
+                    <div class="d-grid gap-2 col-lg-12 border-bottom mb-3">
+                        <button id="search-btn" class="btn btn-success mb-3 " type="button">Search</button>
+                    </div>
+                    <button class="btn btn-success mb-3" type="button" id="clear-history">Clear history</button>
+                    <form id="recent-search-container" class="btn btn-success mb-3"></form> 
+                </div>
+                <!-- forecast elements -->
+                <div id="display-column" class="col col-lg-10 mt-1 d-none mx-3">
+                    <section id="main-display" class="border border-dark px-2 mb-3 rounded">
+                        <h1 id="city-date"></h1>
+                        <img id="current-icon">
+                        <p id="temp">Temp: </p>
+                        <p id="wind">Wind: </p>
+                        <p id="humidity">Humidity: </p>
+                    </section>
+                    <div id="forecast-header" class="d-none row">
+                        <div class="fs-4">
+                            <h4>Five Day Forecast: </h4>
+                        </div>
+                    </div>
+                    <div class="row forecast-container">
+                        <!-- forecast elements -->
+                        <div id="day" class="col bg-success-subtle rounded"></div>
+                        <div id="day" class="col bg-success-subtle rounded"></div>
+                        <div id="day" class="col bg-success-subtle rounded"></div>
+                        <div id="day" class="col bg-success-subtle rounded"></div>
+                        <div id="day" class="col bg-success-subtle rounded"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
     </main>
     <!-- Script -->
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
@@ -34,4 +73,6 @@
 </body>
 
 </html>
+
+
 
