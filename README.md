@@ -31,10 +31,13 @@ THEN I am again presented with current and future conditions for that city
 The following image shows the web application's appearance:
 
 
+<img src="./assets/Images/Mock-Pic.png">
+
 
 
 
 
 ## Web Application 
 
-https://userhal-9000.github.io/week-3-challenge/
+https://userhal-9000.github.io/Helpful-Weather-App/
+
